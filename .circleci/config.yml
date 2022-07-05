@@ -74,7 +74,7 @@ jobs:
       - run:
           name: Run Playbook and Configure server
           command: |
-            sudo ansible-playbook -i inventory.txt main.yml
+            ansible-playbook -i inventory.txt playbook.yml
 
 workflows:
   # Name the workflow "welcome"
