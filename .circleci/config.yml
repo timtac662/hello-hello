@@ -85,6 +85,7 @@ jobs:
           name: Test job
           command: return 1
       - destroy_environment
+        when: on_fail
 
 workflows:
   # Name the workflow "welcome"
@@ -92,7 +93,9 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       - create_infrastructure
-      - smoke_test
+      - smoke_test:
+          requires:
+            - create_infrastructure
       #- configure_infrastructure
       # - welcome/run
       #- print_greetings
